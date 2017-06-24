@@ -9,13 +9,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
+        // interpolation binding
+        this.title = "cac Beginners cua Angular2";
+        // property binding
+        this.image = "http://lorempixel.com/300/300/";
+        this.welcomeText = "Le Duc Tho";
     }
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "\n  <h1>Hello TEDU Online Angular 2!</h1>\n  <my-tutorial></my-tutorial>\n  "
+        template: "\n  <h1>Xin chao {{title}}</h1>\n  <img [src]=\"image\">\n  <br>\n  <input type=\"text\" [value]=\"welcomeText\">\n  <my-tutorial></my-tutorial>\n  "
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;
