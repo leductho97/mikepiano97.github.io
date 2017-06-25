@@ -10,17 +10,14 @@ var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
         // interpolation binding
-        this.title = "cac Beginners cua Angular2";
-        // property binding
-        this.image = "http://lorempixel.com/300/300/";
-        this.welcomeText = "Le Duc Tho";
+        this.title = "Xin chao den voi hanh trinh kham pha Angular 2";
     }
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        template: "\n  <h1>Xin chao {{title}}</h1>\n  <img [src]=\"image\">\n  <br>\n  <input type=\"text\" [value]=\"welcomeText\">\n  <my-tutorial></my-tutorial>\n  "
+        template: "\n  <h1>{{title}}</h1>\n  <my-tutorial></my-tutorial>\n  "
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;

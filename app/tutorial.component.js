@@ -9,13 +9,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var TutorialComponent = (function () {
     function TutorialComponent() {
+        this.title = "Huong dan hoc Angular 2 - Phan 1";
     }
+    TutorialComponent.prototype.hamClick = function (value) {
+        console.log("Gia tri trong o la: " + value);
+    };
     return TutorialComponent;
 }());
 TutorialComponent = __decorate([
     core_1.Component({
         selector: "my-tutorial",
-        template: "<h3>Huong dan hoc Angular 2!</h3>"
+        template: "\n    <h3>{{title}}</h3>\n    <button (click)=\"hamClick(name.value)\">Click me</button>\n    <input type=\"text\" #name>\n    "
     })
 ], TutorialComponent);
 exports.TutorialComponent = TutorialComponent;
