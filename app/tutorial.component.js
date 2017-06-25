@@ -10,19 +10,24 @@ var core_1 = require("@angular/core");
 var TutorialComponent = (function () {
     function TutorialComponent() {
         this.title = "Huong dan hoc Angular 2 - Phan 1";
-        // structural directive *ngIf = "booleanValue"
-        this.showOrNot = true;
-        // structural directive [ngSwitch] = "caseValue"
-        this.display = "Line1";
-        // structural directive *ngFor = "let x of nameVar"
-        this.colors = ["xanh", "do", "tim", "vang"];
+        // Attribute Directives ngClass:   [ngClass] = "{nameVar1: booleanValue1, nameVar2: booleanValue2}"
+        this.cc = true;
+        this.cb = true;
+        // Atribute Directives ngStyle:    [ngStyle] = "{'attribute1': value1, 'attribute2': value2}"
+        this.kichco = "30px";
+        this.doday = "bold";
     }
+    TutorialComponent.prototype.clickToggle = function () {
+        this.cc = !this.cc;
+        this.cb = !this.cb;
+    };
     return TutorialComponent;
 }());
 TutorialComponent = __decorate([
     core_1.Component({
         selector: "my-tutorial",
-        template: "\n    <h2>{{title}}</h2>\n    <h3 *ngIf=\"showOrNot\">Dong nay se duoc hien thi len neu gia tri showOrNot = true va nguoc lai. Day la Structural Directive co ten la \"*ngIf\" </h3>\n    <div [ngSwitch]=\"display\">\n        <p *ngSwitchCase=\"'Line1'\">Line 1 da len song</p>\n        <p *ngSwitchCase=\"'Line2'\">Line 2 da len song</p>\n        <p *ngSwitchCase=\"'Line3'\">Line 3 da len song</p>\n        <p *ngSwitchDefault>Line Default da len song</p>\n    </div>\n    <ul>\n        <li *ngFor=\"let x of colors\">{{x}}</li>\n    </ul>\n    "
+        template: "\n    <h2>{{title}}</h2>\n    <h1 [ngClass]=\"{classColor:cc, classBackground: cb}\">Dong doi se khien em thay doi di tat ca.</h1>\n    <button (click)=\"clickToggle()\">Tat/Bat</button>\n    <p [ngStyle]=\"{'font-size': kichco, 'font-weight': doday}\">Dong nay se bien doi dua vao ngStyle</p>\n    ",
+        styles: ["\n        .classColor {\n            color: red;\n        }\n        .classBackground {\n            background-color: yellow;\n        }\n    "]
     })
 ], TutorialComponent);
 exports.TutorialComponent = TutorialComponent;

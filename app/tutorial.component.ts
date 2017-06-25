@@ -4,27 +4,32 @@ import { Component } from "@angular/core";
     selector: "my-tutorial",
     template: `
     <h2>{{title}}</h2>
-    <h3 *ngIf="showOrNot">Dong nay se duoc hien thi len neu gia tri showOrNot = true va nguoc lai. Day la Structural Directive co ten la "*ngIf" </h3>
-    <div [ngSwitch]="display">
-        <p *ngSwitchCase="'Line1'">Line 1 da len song</p>
-        <p *ngSwitchCase="'Line2'">Line 2 da len song</p>
-        <p *ngSwitchCase="'Line3'">Line 3 da len song</p>
-        <p *ngSwitchDefault>Line Default da len song</p>
-    </div>
-    <ul>
-        <li *ngFor="let x of colors">{{x}}</li>
-    </ul>
-    `
+    <h1 [ngClass]="{classColor:cc, classBackground: cb}">Dong doi se khien em thay doi di tat ca.</h1>
+    <button (click)="clickToggle()">Tat/Bat</button>
+    <p [ngStyle]="{'font-size': kichco, 'font-weight': doday}">Dong nay se bien doi dua vao ngStyle</p>
+    `,
+    styles: [`
+        .classColor {
+            color: red;
+        }
+        .classBackground {
+            background-color: yellow;
+        }
+    `]
 })
 
 export class TutorialComponent {
     public title = "Huong dan hoc Angular 2 - Phan 1";
-    // structural directive *ngIf = "booleanValue"
-    public showOrNot = true;
 
-    // structural directive [ngSwitch] = "caseValue"
-    public display = "Line1";
+    // Attribute Directives ngClass:   [ngClass] = "{nameVar1: booleanValue1, nameVar2: booleanValue2}"
+    public cc = true;
+    public cb = true;
+    clickToggle(){
+        this.cc = !this.cc;
+        this.cb = !this.cb;
+    }
 
-    // structural directive *ngFor = "let x of nameVar"
-    public colors: string[] = ["xanh","do","tim","vang"];
+    // Atribute Directives ngStyle:    [ngStyle] = "{'attribute1': value1, 'attribute2': value2}"
+    public kichco = "30px";
+    public doday = "bold";       
 }
