@@ -10,13 +10,19 @@ var core_1 = require("@angular/core");
 var TutorialComponent = (function () {
     function TutorialComponent() {
         this.title = "Huong dan hoc Angular 2 - Phan 1";
+        // structural directive *ngIf = "booleanValue"
+        this.showOrNot = true;
+        // structural directive [ngSwitch] = "caseValue"
+        this.display = "Line1";
+        // structural directive *ngFor = "let x of nameVar"
+        this.colors = ["xanh", "do", "tim", "vang"];
     }
     return TutorialComponent;
 }());
 TutorialComponent = __decorate([
     core_1.Component({
         selector: "my-tutorial",
-        template: "\n    <h3>{{title}}</h3>\n    First Name: <input type=\"text\" [(ngModel)]=\"firstname\"/> <br>\n    Last Name: <input type=\"text\" [(ngModel)]=\"lastname\"/> <br>\n    So your Full Name is: {{firstname}} {{lastname}} <br>\n    "
+        template: "\n    <h2>{{title}}</h2>\n    <h3 *ngIf=\"showOrNot\">Dong nay se duoc hien thi len neu gia tri showOrNot = true va nguoc lai. Day la Structural Directive co ten la \"*ngIf\" </h3>\n    <div [ngSwitch]=\"display\">\n        <p *ngSwitchCase=\"'Line1'\">Line 1 da len song</p>\n        <p *ngSwitchCase=\"'Line2'\">Line 2 da len song</p>\n        <p *ngSwitchCase=\"'Line3'\">Line 3 da len song</p>\n        <p *ngSwitchDefault>Line Default da len song</p>\n    </div>\n    <ul>\n        <li *ngFor=\"let x of colors\">{{x}}</li>\n    </ul>\n    "
     })
 ], TutorialComponent);
 exports.TutorialComponent = TutorialComponent;
