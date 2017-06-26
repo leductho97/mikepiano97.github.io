@@ -1,35 +1,31 @@
-import { Component } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
     selector: "my-tutorial",
     template: `
     <h2>{{title}}</h2>
-    <h1 [ngClass]="{classColor:cc, classBackground: cb}">Dong doi se khien em thay doi di tat ca.</h1>
-    <button (click)="clickToggle()">Tat/Bat</button>
-    <p [ngStyle]="{'font-size': kichco, 'font-weight': doday}">Dong nay se bien doi dua vao ngStyle</p>
-    `,
-    styles: [`
-        .classColor {
-            color: red;
-        }
-        .classBackground {
-            background-color: yellow;
-        }
-    `]
+    <p>Ho va ten: {{name}}</p>
+
+    <button [disabled]="voted" (click)="vote(true)">Agree</button>
+    <button [disabled]="voted" (click)="vote(false)">Disagree</button>
+    <br><br>
+    Da vote chua? {{voted}}
+    `
 })
 
 export class TutorialComponent {
-    public title = "Huong dan hoc Angular 2 - Phan 1";
+      @Input() name: string;
+      @Output() onVote = new EventEmitter<boolean>();
 
-    // Attribute Directives ngClass:   [ngClass] = "{nameVar1: booleanValue1, nameVar2: booleanValue2}"
-    public cc = true;
-    public cb = true;
-    clickToggle(){
-        this.cc = !this.cc;
-        this.cb = !this.cb;
-    }
+      // khai bao bien voted = fasle, nghia la chua vote
+      public voted: boolean = false;
 
-    // Atribute Directives ngStyle:    [ngStyle] = "{'attribute1': value1, 'attribute2': value2}"
-    public kichco = "30px";
-    public doday = "bold";       
+      // sau khi click, su kien vote se tra ve ket qua, thay doi bien vote thanh true, bat ke dung hay sai.
+      vote(agree:boolean){
+          this.voted = true;
+          this.onVote.emit(agree);
+      };
+      setName(name:string) {
+          this.name = name;
+      }
 }
